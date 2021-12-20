@@ -31,8 +31,8 @@ public class AmmunitionService {
     public void deleteAmmunition(Ammunition ammunition){
         if(ammunitionRepository.findByType(ammunition.getType())!=null){
             Ammunition ammunitionUpdate = ammunitionRepository.findByType(ammunition.getType());
-            if(ammunitionUpdate.getAmount() - ammunition.getAmount()<=0){
-                System.out.println("Ilość jest mniejsza 0");
+            if(ammunitionUpdate.getAmount() - ammunition.getAmount()==0) {
+                ammunitionRepository.delete(ammunitionUpdate);
             }else{
                 ammunitionUpdate.setAmount(ammunitionUpdate.getAmount() - ammunition.getAmount());
                 ammunitionRepository.save(ammunitionUpdate);

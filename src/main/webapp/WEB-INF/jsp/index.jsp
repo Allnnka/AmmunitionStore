@@ -14,15 +14,25 @@
     </nav>
     <div class="container">
         <div class="ammunition-table">
-            <table>
+            <ul class="responsive-table">
+                <li class="table-header">
+                    <div class="col col-1">Typ</div>
+                    <div class="col col-2">Ilość</div>
+                    <div class="col col-3"></div>
+                </li>
                 <c:forEach  var="amm" items="${ammunitionList}">
-                    <tr>
-                        <td><c:out value="${amm.type}"/></td>
-                        <td><c:out value="${amm.amount}"/></td>
-                    </tr>
-                </c:forEach>
-            </table>
+                    <li class="table-row">
+                        <div class="col col-1"><c:out value="${amm.type}"/></div>
+                        <div class="col col-2"><c:out value="${amm.amount}"/></div>
+                        <div class="col col-3">
+                            <div class="progress">
 
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                </c:forEach>
+            </ul>
         </div>
         <div class="ammunition-form-div">
             <div class="ammunition-form-title">
@@ -39,6 +49,7 @@
                     <form:label path="amount" class="control-label required">Ilość<span class="text-danger"> *</span></form:label>
                     <form:input type="number" class="form-control"  path="amount"/>
                     <form:errors path="amount" cssClass="text-danger"/><br><br>
+                    <span class="text-danger">${exceptionMsg}</span>
                 </div>
 
                 <form:button type="submit" name="add" class="add-btn">Dodaj</form:button>

@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.FlashMap;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -40,7 +42,14 @@ public class AmmunitionController {
             ammunitionService.addAmmunition(ammunition);
         }
         if(request.getParameter("delete")!=null){
-            ammunitionService.deleteAmmunition(ammunition);
+            try{
+                ammunitionService.deleteAmmunition(ammunition);
+            }catch (Exception ex){
+                List<Ammunition> ammunitionList = ammunitionService.getAll();
+                request.setAttribute("ammunitionList", ammunitionList);
+                request.setAttribute("exceptionMsg","Ilość amunicji w magazynie jest mniejsza od wprowadzanej wartości!");
+                return "index";
+            }
         }
         return "redirect:/";
     }

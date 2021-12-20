@@ -2,12 +2,6 @@
     display: flex;
     flex-direction: row;
 }
-.ammunition-table{
-    width: 60%;
-    margin: 5%;
-    background: blue;
-
-}
 .ammunition-form-div{
     width: 30%;
     margin: 5%;
@@ -64,4 +58,81 @@
 }
 .text-danger{
     color: red;
+}
+
+.ammunition-table{
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 60%;
+    margin: 5%;
+}
+.responsive-table li{
+    border-radius: 3px;
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+.responsive-table .table-header{
+    background-color: #95A5A6;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.responsive-table .table-row{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+}
+.col-1{
+    flex-basis: 10%;
+}
+.col-2{
+    flex-basis: 10%;
+}
+.col-3{
+    flex-basis: 80%;
+}
+
+@media all and (max-width: 1000px) {
+
+    .table-header {
+        display: none;
+    }
+    .table-row{
+
+    }
+    li {
+        display: block;
+    }
+    .col {
+        flex-basis: 100%;
+    }
+    .col {
+        display: flex;
+        padding: 10px 0;
+    }
+    .col:before {
+     color: #6C7A89;
+     padding-right: 10px;
+     content: attr(data-label);
+     flex-basis: 50%;
+     text-align: right;
+    }
+    .ammunition-table{
+        width: 100%;
+        margin:0;
+        padding: 0;
+    }
+    .ammunition-form-div{
+        width: 100%;
+        margin:0;
+    }
+    .container{
+        display: list-item;
+    }
+    .responsive-table{
+        padding: 0;
+    }
 }
