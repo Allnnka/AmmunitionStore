@@ -1,0 +1,67 @@
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.ammunition-table{
+    width: 60%;
+    margin: 5%;
+    background: blue;
+
+}
+.ammunition-form-div{
+    width: 30%;
+    margin: 5%;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow:hidden;
+}
+.ammunition-form-title{
+    background: darkgreen;
+    padding: 15px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+}
+.ammunition-form{
+    padding: 15px;
+}
+.ammunition-form div{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 15px 0;
+}
+.ammunition-form div label{
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.ammunition-form div input{
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.ammunition-form button{
+    background-color: darkgreen;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+.ammunition-form .add-btn{
+    float: left;
+    margin: 15px 0 20px 50px;
+}
+.ammunition-form .delete-btn{
+    float: right;
+    margin: 15px 50px 20px 0px;
+}
+.text-danger{
+    color: red;
+}
