@@ -25,10 +25,23 @@
                         <div class="col col-1"><c:out value="${amm.type}"/></div>
                         <div class="col col-2"><c:out value="${amm.amount}"/></div>
                         <div class="col col-3">
-                            <div class="progress">
+                            <c:set var="pbWidth" value="${amm.amount/maxAmount*100}"/>
+                            <c:set var="pgColor" value="white"/>
+                            <c:choose>
+                                <c:when test="${amm.amount<100}">
+                                    <c:set var="pgColor" value="red"/>
+                                </c:when>
+                                <c:when test="${amm.amount>100 && amm.amount<1000}">
+                                    <c:set var="pgColor" value="yellow"/>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:set var="pgColor" value="green"/>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <div class="progress" style="width:${pbWidth}%;background-color: ${pgColor}; height: 30px">
 
                             </div>
-                        </div>
                         </div>
                     </li>
                 </c:forEach>

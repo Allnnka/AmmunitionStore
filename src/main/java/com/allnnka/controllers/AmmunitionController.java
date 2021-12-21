@@ -13,6 +13,7 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -27,8 +28,12 @@ public class AmmunitionController {
     @GetMapping("/")
     public String index(HttpServletRequest request) {
         List<Ammunition> ammunitionList = ammunitionService.getAll();
+//        List<String> ammunitionType=ammunitionList.stream().map(Ammunition::getType).toList();
+//        ammunitionType.add("Inne");
         request.setAttribute("ammunitionform",new Ammunition());
         request.setAttribute("ammunitionList", ammunitionList);
+
+        request.setAttribute("maxAmount",(ammunitionList.stream().max(Comparator.comparing(Ammunition::getAmount)).get()).getAmount()+10);
         return "index";
     }
     @PostMapping(value = "/")
@@ -36,6 +41,7 @@ public class AmmunitionController {
         if(errors.hasErrors()){
             List<Ammunition> ammunitionList = ammunitionService.getAll();
             request.setAttribute("ammunitionList", ammunitionList);
+            request.setAttribute("maxAmount",(ammunitionList.stream().max(Comparator.comparing(Ammunition::getAmount)).get()).getAmount()+10);
             return "index";
         }
         if(request.getParameter("add")!=null){
@@ -47,6 +53,7 @@ public class AmmunitionController {
             }catch (Exception ex){
                 List<Ammunition> ammunitionList = ammunitionService.getAll();
                 request.setAttribute("ammunitionList", ammunitionList);
+                request.setAttribute("maxAmount",(ammunitionList.stream().max(Comparator.comparing(Ammunition::getAmount)).get()).getAmount()+10);
                 request.setAttribute("exceptionMsg","Ilość amunicji w magazynie jest mniejsza od wprowadzanej wartości!");
                 return "index";
             }
