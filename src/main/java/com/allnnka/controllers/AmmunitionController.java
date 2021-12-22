@@ -28,11 +28,10 @@ public class AmmunitionController {
     @GetMapping("/")
     public String index(HttpServletRequest request) {
         List<Ammunition> ammunitionList = ammunitionService.getAll();
-//        List<String> ammunitionType=ammunitionList.stream().map(Ammunition::getType).toList();
-//        ammunitionType.add("Inne");
+        List<String> ammunitionType=ammunitionList.stream().map(Ammunition::getType).toList();
+        request.setAttribute("ammunitionType",ammunitionType);
         request.setAttribute("ammunitionform",new Ammunition());
         request.setAttribute("ammunitionList", ammunitionList);
-
         request.setAttribute("maxAmount",(ammunitionList.stream().max(Comparator.comparing(Ammunition::getAmount)).get()).getAmount()+10);
         return "index";
     }

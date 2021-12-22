@@ -10,7 +10,7 @@
 
 <body>
     <nav>
-        <span>Ammunition Store</span>
+        <h2>Ammunition Store</h2>
     </nav>
     <div class="container">
         <div class="ammunition-table">
@@ -55,7 +55,12 @@
             <form:form class="ammunition-form" action="/" modelAttribute="ammunitionform" method="POST" acceptCharset="UTF-8">
                 <div>
                     <form:label path="type" class="control-label required">Typ pocisku <span class="text-danger"> *</span></form:label>
-                    <form:input type="text" class="form-control" name="type" path="type"/>
+                    <form:input list="typeList" type="text" class="form-control" name="type" path="type"/>
+                    <datalist id="typeList">
+                        <c:forEach var="ammType" items="${ammunitionType}">
+                            <option value="${ammType}"></option>
+                        </c:forEach>
+                    </datalist>
                     <form:errors path="type"  cssClass="text-danger"/><br><br>
                 </div>
                 <div>

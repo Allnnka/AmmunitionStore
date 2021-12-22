@@ -1,3 +1,7 @@
+html, body { height: 100%; }
+body {
+    margin: 0;
+}
 .container{
     display: flex;
     flex-direction: row;
@@ -5,17 +9,16 @@
 .ammunition-form-div{
     width: 30%;
     margin: 5%;
-    border: 1px solid black;
-    border-radius: 15px;
     overflow:hidden;
 }
 .ammunition-form-title{
-    background: darkgreen;
+    background-color: #252601;
+    border-radius: 10px 10px 0 0 ;
+    color:white;
     padding: 15px;
     display: flex;
     align-content: center;
     justify-content: center;
-    color: white;
     font-size: 20px;
     font-weight: 400;
 }
@@ -37,16 +40,17 @@
     margin-bottom: 10px;
 }
 .ammunition-form button{
-    background-color: darkgreen;
+    background-color: #252601;
+    color:white;
+    border-radius: 15px;
     border: none;
-    border-radius: 10px;
-    color: white;
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
+    width: 100px;
 }
 .ammunition-form .add-btn{
     float: left;
@@ -76,7 +80,8 @@
     margin-bottom: 25px;
 }
 .responsive-table .table-header{
-    background-color: #95A5A6;
+    background-color:#858C69;
+    color:white;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
@@ -84,6 +89,10 @@
 .responsive-table .table-row{
     background-color: #ffffff;
     box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+}
+.responsive-table{
+    padding: 0;
+    margin-top:0;
 }
 .col-1{
     flex-basis: 10%;
@@ -94,7 +103,19 @@
 .col-3{
     flex-basis: 80%;
 }
-
+nav{
+    background-color: #252601;
+    color: white;
+    position:absolute;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 50px;
+}
+nav h2{
+    margin-right: 50px;
+}
 @media all and (max-width: 1000px) {
 
     .table-header {
@@ -121,15 +142,19 @@
      text-align: right;
     }
     .ammunition-table{
-        width: 100%;
-        margin:0;
+        width: 90%;
+        margin:5%;
         padding: 0;
     }
     .ammunition-form-div{
-        width: 100%;
-        margin:0;
+        width: 90%;
+        margin:5%;
     }
     .responsive-table{
         padding: 0;
+    }
+
+    .container{
+        display:contents;
     }
 }
